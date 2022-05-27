@@ -1,6 +1,6 @@
 import {Component, ViewChild, ViewContainerRef} from "@angular/core";
 import {ColumnApi, GridApi} from "@ag-grid-enterprise/all-modules";
-import {AgGridModule, ICellEditorAngularComp} from "@ag-grid-community/angular";
+import {AgGridModule, ICellEditorAngularComp} from "@ag-grid-community/angular-legacy";
 import { TestBed, waitForAsync } from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
 
