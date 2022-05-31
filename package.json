@@ -14,7 +14,8 @@
     "build": "ng build --aot --prod && npm run hash",
     "build-prod": "npm run build",
     "hash": "sh ./hashDirectory.sh > .hash",
-    "lint": "tslint \"src/**/*.ts\""
+    "lint": "tslint \"src/**/*.ts\"",
+    "test:e2e": "ng test --watch false --browsers ChromeHeadless"
   },
   "private": true,
   "dependencies": {

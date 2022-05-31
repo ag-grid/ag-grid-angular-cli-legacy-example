@@ -1,6 +1,6 @@
 import {Component, ViewChild, ViewContainerRef} from "@angular/core";
-import {ColumnApi, GridApi} from "@ag-grid-enterprise/all-modules";
-import {AgGridModule, ICellEditorAngularComp} from "@ag-grid-community/angular-legacy";
+import {ColumnApi, GridApi, ICellRendererParams} from "@ag-grid-enterprise/all-modules";
+import {AgGridModule, ICellEditorAngularComp, ICellRendererAngularComp} from "@ag-grid-community/angular-legacy";
 import { TestBed, waitForAsync } from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
 
@@ -10,11 +10,15 @@ import {Module, AllCommunityModules} from "@ag-grid-enterprise/all-modules";
     template: `
         <span>{{this.params.value * 2}}</span>`
 })
-class RendererComponent {
+class RendererComponent implements ICellRendererAngularComp {
+    
     params: any;
 
     public agInit(params) {
         this.params = params;
+    }
+    refresh(params: ICellRendererParams): boolean {
+        return false;
     }
 }
 
@@ -27,7 +31,7 @@ export class EditorComponent implements ICellEditorAngularComp {
     private params: any;
     public value: number;
 
-    @ViewChild('input', {read: ViewContainerRef, static: false}) public input;
+    @ViewChild('input', {read: ViewContainerRef, static: false}) public input!: any;
 
     agInit(params: any): void {
         this.params = params;
@@ -62,8 +66,6 @@ export class EditorComponent implements ICellEditorAngularComp {
 
                              [stopEditingWhenGridLosesFocus]="false"
 
-                             [frameworkComponents]="frameworkComponents"
-
                              (gridReady)="onGridReady($event)">
             </ag-grid-angular>
         </div>`
@@ -75,14 +77,9 @@ class TestHostComponent {
 
     columnDefs: any[] = [
         {field: "name"},
-        {field: "number", colId: "raw", headerName: "Raw Number", editable: true, cellEditor: 'editor'},
-        {field: "number", colId: "renderer", headerName: "Renderer Value", cellRenderer: 'renderer'}
+        {field: "number", colId: "raw", headerName: "Raw Number", editable: true, cellEditor: EditorComponent},
+        {field: "number", colId: "renderer", headerName: "Renderer Value", cellRenderer: RendererComponent}
     ];
-
-    frameworkComponents = {
-        'renderer': RendererComponent,
-        'editor': EditorComponent
-    };
 
     api: GridApi;
     columnApi: ColumnApi;
