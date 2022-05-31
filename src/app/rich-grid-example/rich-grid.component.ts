@@ -1,6 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 // for enterprise features
-import { AllModules, ColumnApi, GridApi, Module, ColDef, ColGroupDef, GridReadyEvent, CellClickedEvent, CellDoubleClickedEvent, CellContextMenuEvent } from '@ag-grid-enterprise/all-modules';
+import { ColumnApi, GridApi, Module, ColDef, ColGroupDef, GridReadyEvent, CellClickedEvent, CellDoubleClickedEvent, CellContextMenuEvent } from '@ag-grid-enterprise/all-modules';
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SideBarModule } from '@ag-grid-enterprise/side-bar';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { StatusBarModule } from '@ag-grid-enterprise/status-bar';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 import { ProficiencyFilter } from '../filters/proficiency.component.filter';
 import { SkillFilter } from '../filters/skill.component.filter';
@@ -10,8 +18,6 @@ import { DateComponent } from '../date-component/date.component';
 import { SortableHeaderComponent } from '../header-component/sortable-header.component';
 import { RendererComponent } from '../renderer-component/renderer.component';
 
-// for community features
-// import {Module, CommunityModules} from "@ag-grid-community/all-modules";
 
 // set your key here
 // import {LicenseManager} from "@ag-grid-enterprise/all-modules";
@@ -32,7 +38,16 @@ export class RichGridComponent {
     public components: any;
     public sideBar: false;
 
-    public modules: Module[] = AllModules;
+    public modules: Module[] = [
+        ClientSideRowModelModule,
+        MenuModule,
+        SideBarModule,
+        ColumnsToolPanelModule,
+        FiltersToolPanelModule,
+        StatusBarModule,
+        RowGroupingModule,
+        SetFilterModule
+    ];
 
     public api: GridApi;
     public columnApi: ColumnApi;
