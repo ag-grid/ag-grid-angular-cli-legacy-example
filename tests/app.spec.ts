@@ -1,10 +1,19 @@
 import {Component, ViewChild, ViewContainerRef} from "@angular/core";
-import {ColumnApi, GridApi, ICellRendererParams} from "@ag-grid-enterprise/all-modules";
 import {AgGridModule, ICellEditorAngularComp, ICellRendererAngularComp} from "@ag-grid-community/angular-legacy";
 import { TestBed, waitForAsync } from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
+// for enterprise features
 
-import {Module, AllCommunityModules} from "@ag-grid-enterprise/all-modules";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SideBarModule } from '@ag-grid-enterprise/side-bar';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { StatusBarModule } from '@ag-grid-enterprise/status-bar';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+
+import { ColumnApi, GridApi, ICellRendererParams, Module } from "@ag-grid-community/core";
 
 @Component({
     template: `
@@ -71,7 +80,16 @@ export class EditorComponent implements ICellEditorAngularComp {
         </div>`
 })
 class TestHostComponent {
-    modules: Module[] = AllCommunityModules;
+    modules: Module[] = [
+        ClientSideRowModelModule,
+        MenuModule,
+        SideBarModule,
+        ColumnsToolPanelModule,
+        FiltersToolPanelModule,
+        StatusBarModule,
+        RowGroupingModule,
+        SetFilterModule
+    ]
 
     rowData: any[] = [{name: 'Test Name', number: 42}];
 

@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 // for enterprise features
-import { ColumnApi, GridApi, Module, ColDef, ColGroupDef, GridReadyEvent, CellClickedEvent, CellDoubleClickedEvent, CellContextMenuEvent } from '@ag-grid-enterprise/all-modules';
+import {
+    ColumnApi, GridApi, Module, ColDef, ColGroupDef, GridReadyEvent, CellClickedEvent, CellDoubleClickedEvent, CellContextMenuEvent } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { MenuModule } from '@ag-grid-enterprise/menu';
 import { SideBarModule } from '@ag-grid-enterprise/side-bar';
@@ -20,7 +21,7 @@ import { RendererComponent } from '../renderer-component/renderer.component';
 
 
 // set your key here
-// import {LicenseManager} from "@ag-grid-enterprise/all-modules";
+// import {LicenseManager} from from "@ag-grid-enterprise/core";
 // LicenseManager.setLicenseKey(<your key>);
 
 @Component({

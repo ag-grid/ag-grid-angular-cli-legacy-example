@@ -1,4 +1,4 @@
-import {IFilterParams} from "@ag-grid-enterprise/all-modules";
+import {IFilterParams} from "@ag-grid-community/core";
 
 import {Component, OnDestroy} from "@angular/core";
 import {IFilterAngularComp} from "@ag-grid-community/angular-legacy";
