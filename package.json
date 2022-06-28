@@ -22,6 +22,7 @@
     "@ag-grid-community/angular-legacy": "~27.3.0",
     "@ag-grid-community/core": "~27.3.0",
     "@ag-grid-community/client-side-row-model": "~27.3.0",
+    "@ag-grid-community/styles": "~27.3.0",
     "@ag-grid-enterprise/menu": "~27.3.0",
     "@ag-grid-enterprise/side-bar": "~27.3.0",
     "@ag-grid-enterprise/column-tool-panel": "~27.3.0",
