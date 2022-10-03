@@ -10,6 +10,7 @@ import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 import { StatusBarModule } from '@ag-grid-enterprise/status-bar';
 import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
 
 import { ProficiencyFilter } from '../filters/proficiency.component.filter';
 import { SkillFilter } from '../filters/skill.component.filter';
@@ -47,7 +48,8 @@ export class RichGridComponent {
         FiltersToolPanelModule,
         StatusBarModule,
         RowGroupingModule,
-        SetFilterModule
+        SetFilterModule,
+        RangeSelectionModule
     ];
 
     public api: GridApi;
