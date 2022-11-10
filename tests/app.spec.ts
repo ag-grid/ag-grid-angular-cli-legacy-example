@@ -73,7 +73,7 @@ export class EditorComponent implements ICellEditorAngularComp {
                              [rowData]="rowData"
                              [modules]="modules"
 
-                             [stopEditingWhenGridLosesFocus]="false"
+                             [stopEditingWhenCellsLoseFocus]="false"
 
                              (gridReady)="onGridReady($event)">
             </ag-grid-angular>
