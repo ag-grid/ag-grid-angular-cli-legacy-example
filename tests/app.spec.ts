@@ -1,33 +1,20 @@
 import {Component, ViewChild, ViewContainerRef} from "@angular/core";
-import {AgGridModule, ICellEditorAngularComp, ICellRendererAngularComp} from "@ag-grid-community/angular-legacy";
+import {ColumnApi, GridApi} from "@ag-grid-enterprise/all-modules";
+import {AgGridModule, ICellEditorAngularComp} from "@ag-grid-community/angular";
 import { TestBed, waitForAsync } from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
-// for enterprise features
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { SideBarModule } from '@ag-grid-enterprise/side-bar';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
-import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
-import { StatusBarModule } from '@ag-grid-enterprise/status-bar';
-import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
-
-import { ColumnApi, GridApi, ICellRendererParams, Module } from "@ag-grid-community/core";
+import {Module, AllCommunityModules} from "@ag-grid-enterprise/all-modules";
 
 @Component({
     template: `
         <span>{{this.params.value * 2}}</span>`
 })
-class RendererComponent implements ICellRendererAngularComp {
-    
+class RendererComponent {
     params: any;
 
     public agInit(params) {
         this.params = params;
-    }
-    refresh(params: ICellRendererParams): boolean {
-        return false;
     }
 }
 
@@ -40,7 +27,7 @@ export class EditorComponent implements ICellEditorAngularComp {
     private params: any;
     public value: number;
 
-    @ViewChild('input', {read: ViewContainerRef, static: false}) public input!: any;
+    @ViewChild('input', {read: ViewContainerRef, static: false}) public input;
 
     agInit(params: any): void {
         this.params = params;
@@ -73,31 +60,29 @@ export class EditorComponent implements ICellEditorAngularComp {
                              [rowData]="rowData"
                              [modules]="modules"
 
-                             [stopEditingWhenCellsLoseFocus]="false"
+                             [stopEditingWhenGridLosesFocus]="false"
+
+                             [frameworkComponents]="frameworkComponents"
 
                              (gridReady)="onGridReady($event)">
             </ag-grid-angular>
         </div>`
 })
 class TestHostComponent {
-    modules: Module[] = [
-        ClientSideRowModelModule,
-        MenuModule,
-        SideBarModule,
-        ColumnsToolPanelModule,
-        FiltersToolPanelModule,
-        StatusBarModule,
-        RowGroupingModule,
-        SetFilterModule
-    ]
+    modules: Module[] = AllCommunityModules;
 
     rowData: any[] = [{name: 'Test Name', number: 42}];
 
     columnDefs: any[] = [
         {field: "name"},
-        {field: "number", colId: "raw", headerName: "Raw Number", editable: true, cellEditor: EditorComponent},
-        {field: "number", colId: "renderer", headerName: "Renderer Value", cellRenderer: RendererComponent}
+        {field: "number", colId: "raw", headerName: "Raw Number", editable: true, cellEditor: 'editor'},
+        {field: "number", colId: "renderer", headerName: "Renderer Value", cellRenderer: 'renderer'}
     ];
+
+    frameworkComponents = {
+        'renderer': RendererComponent,
+        'editor': EditorComponent
+    };
 
     api: GridApi;
     columnApi: ColumnApi;

@@ -24,13 +24,7 @@
       ],
       "@ag-grid-community/core/*": [
         "../node_modules/@ag-grid-community/core/*"
-      ],
-      "@ag-grid-community/angular-legacy": [
-        "../node_modules/@ag-grid-community/angular-legacy"
-      ],
-      "@ag-grid-community/angular-legacy/*": [
-        "../node_modules/@ag-grid-community/angular-legacy/*"
-      ],
+      ]
     }
   },
   "angularCompilerOptions": {

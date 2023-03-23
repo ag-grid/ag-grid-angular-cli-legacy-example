@@ -1,37 +1,25 @@
 {
-  "name": "ag-grid-angular-cli-legacy-example",
-  "version": "29.2.0",
+  "name": "ag-grid-angular-cli-example",
+  "version": "27.3.0",
   "description": "AG Grid Angular Example Using Angular CLI",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ag-grid/ag-grid-angular-cli-legacy-example.git"
+    "url": "https://github.com/ag-grid/ag-grid-angular-cli.git"
   },
   "author": "Sean Landsman <sean@thelandsmans.com>",
   "angular-cli": {},
   "scripts": {
     "start": "ng serve --port 8080",
-    "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" ng build --aot --prod && npm run hash",
+    "build": "ng build --aot --prod && npm run hash",
     "build-prod": "npm run build",
     "hash": "sh ./hashDirectory.sh > .hash",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test:e2e": "ng test --watch false --browsers ChromeHeadless"
+    "lint": "tslint \"src/**/*.ts\""
   },
   "private": true,
   "dependencies": {
-    "@ag-grid-community/angular-legacy": "~29.2.0",
-    "@ag-grid-community/core": "~29.2.0",
-    "@ag-grid-community/client-side-row-model": "~29.2.0",
-    "@ag-grid-community/styles": "~29.2.0",
-    "@ag-grid-enterprise/menu": "~29.2.0",
-    "@ag-grid-enterprise/side-bar": "~29.2.0",
-    "@ag-grid-enterprise/column-tool-panel": "~29.2.0",
-    "@ag-grid-enterprise/filter-tool-panel": "~29.2.0",
-    "@ag-grid-enterprise/row-grouping": "~29.2.0",
-    "@ag-grid-enterprise/set-filter": "~29.2.0",
-    "@ag-grid-enterprise/status-bar": "~29.2.0",
-    "@ag-grid-enterprise/range-selection": "~29.2.0",
-    "@ag-grid-enterprise/charts": "~29.2.0",
+    "@ag-grid-community/angular": "~27.3.0",
+    "@ag-grid-enterprise/all-modules": "~27.3.0",
     "@angular/animations": "11.2.14",
     "@angular/common": "11.2.14",
     "@angular/compiler": "11.2.14",
